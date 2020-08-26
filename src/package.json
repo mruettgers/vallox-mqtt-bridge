@@ -1,0 +1,24 @@
+{
+    "name": "vallox-mqtt-bridge",
+    "version": "1.0.0",
+    "description": "Publishes metrics of your Vallox ventilation unit to an MQTT broker",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mruettgers/vallox-mqtt-bridge.git"
+    },
+    "author": "Michael Rüttgers",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mruettgers/vallox-mqtt-bridge/issues"
+    },
+    "homepage": "https://github.com/mruettgers/vallox-mqtt-bridge#readme",
+    "dependencies": {
+        "@danielbayerlein/vallox-api": "^1.0.0",
+        "mqtt": "^4.2.1",
+        "yaml": "^1.10.0"
+    }
+}

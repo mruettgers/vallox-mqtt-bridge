@@ -1,0 +1,24 @@
+interval: 300
+
+valox:
+  unit:
+    host: 10.4.35.232
+    port: 80
+  
+mqtt:
+  broker:
+    host: 10.4.32.103
+  topic: ventilation/metrics
+
+metrics:
+  - A_CYC_FAN_SPEED
+  - A_CYC_TEMP_EXTRACT_AIR
+  - A_CYC_TEMP_EXHAUST_AIR
+  - A_CYC_TEMP_OUTDOOR_AIR
+  - A_CYC_TEMP_SUPPLY_CELL_AIR
+  - A_CYC_TEMP_SUPPLY_AIR
+  - A_CYC_RH_LEVEL
+  - A_CYC_CO2_LEVEL
+  - A_CYC_EXTR_FAN_SPEED
+  - A_CYC_SUPP_FAN_SPEED
+  - A_CYC_RH_VALUE
