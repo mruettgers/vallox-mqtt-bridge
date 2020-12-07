@@ -1,5 +1,5 @@
 FROM node:alpine
-MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
+LABEL maintainer="Michael Ruettgers <michael@ruettgers.eu>""
 
 ENV HOME /opt/vallox-mqtt-bridge
 
