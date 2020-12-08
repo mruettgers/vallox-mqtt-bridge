@@ -49,7 +49,7 @@ const setProfile = (payload) => {
 }
 
 // Get Metrics
-const getMetrics = (keys = null) => {
+const getMetrics = (keys = null, cb) => {
     try {
         if (typeof keys === 'string') {
             keys = keys.length > 0 ? JSON.parse(keys) : []
@@ -60,18 +60,22 @@ const getMetrics = (keys = null) => {
         return vallox_client
             .fetchMetrics(keys)
             .then((metrics) => {
-                console.log(metrics)
                 for (key in metrics) {
                     if (!metrics.hasOwnProperty(key))
                         continue
                     const topic = `${config.mqtt.base_topic}/metric/${key}/value`
                     mqtt_client.publish(topic, metrics[key] === undefined ? 'undefined' : metrics[key].toString())
-                }        
+                }
+                cb()        
             })
-            .catch(console.error)
+            .catch((err) => {
+                console.error(err)
+                cb(err)
+            })
     }
     catch (err) {
         console.error(err)
+        cb && cb(err)
     }
 }
 
@@ -82,7 +86,7 @@ const setValues = (payload) => {
         const values = JSON.parse(payload)
         vallox_client
             .setValues(values)
-            .catch(console.error);
+            .catch(console.error)
     } catch (err) {
         console.error(err)
     }    
@@ -122,10 +126,12 @@ const fetch_metrics = () => {
         return
     running = true
     try {
-        getMetrics(config.metrics)
+        getMetrics(config.metrics, (err) => {
+            running = false
+        })
     } catch (err) {
         running = false
-        console.err(err)
+        console.error(err)
     }
 }
 
