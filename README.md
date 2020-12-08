@@ -34,27 +34,31 @@ metrics:
 
 ### profiles/get
 ```
-ventilation/unit/1/profiles/get (null)  
+> ventilation/unit/1/profiles/get (null)  
 
 ventilation/unit/1/profiles/value {"NONE":0,"HOME":1,"AWAY":2,"BOOST":3,"FIREPLACE":4,"EXTRA":5}
 ```
 
 ### profile/get
 ```
-ventilation/unit/1/profile/get (null)  
+> ventilation/unit/1/profile/get (null)  
 
 ventilation/unit/1/profile/value 2
 ```
 
 ### profile/set
-```ventilation/unit/1/profile/set 2```
+```
+> ventilation/unit/1/profile/set 2
+```
 
 ### values/set
-```ventilation/unit/1/values/set { "A_CYC_HOME_SPEED_SETTING": 35 }```
+```
+> ventilation/unit/1/values/set { "A_CYC_HOME_SPEED_SETTING": 35 }
+```
 
 ### metrics/get
 ```
-ventilation/unit/1/metrics/get ["A_CYC_HOME_SPEED_SETTING", "A_CYC_AWAY_SPEED_SETTING"]  
+> ventilation/unit/1/metrics/get ["A_CYC_HOME_SPEED_SETTING", "A_CYC_AWAY_SPEED_SETTING"]  
 
 ventilation/unit/1/metric/A_CYC_HOME_SPEED_SETTING/value 35
 ventilation/unit/1/metric/A_CYC_AWAY_SPEED_SETTING/value 10
@@ -67,11 +71,16 @@ ventilation/unit/1/metric/A_CYC_AWAY_SPEED_SETTING/value 10
 `docker buildx build --platform=linux/arm/v7,linux/amd64 -t mruettgers/vallox-mqtt-bridge .`
 
 To push to the registry add `--push`.
- Build
-
-`docker buildx build --platform=linux/arm/v7,linux/amd64 -t mruettgers/vallox-mqtt-bridge .`
-
-To push to the registry add `--push`.
 
 ### Run
 `docker run -v config.yml:/opt/valox-mqtt-bridge/config.yml mruettgers/vallox-mqtt-bridge`
+
+
+## Credits
+* [vallox api](https://github.com/danielbayerlein/vallox-api) (Javascript API for Vallox ventilation units by Daniel Bayerlein)
+
+
+## License
+
+Distributed under the MIT license.  
+See [LICENSE](LICENSE) for more information.
