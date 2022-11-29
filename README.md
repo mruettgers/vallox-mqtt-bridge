@@ -73,7 +73,7 @@ ventilation/unit/1/metric/A_CYC_AWAY_SPEED_SETTING/value 10
 To push to the registry add `--push`.
 
 ### Run
-`docker run -v config.yml:/opt/valox-mqtt-bridge/config.yml mruettgers/vallox-mqtt-bridge`
+`docker run -v config.yml:/config/vallox-mqtt-bridge.yml mruettgers/vallox-mqtt-bridge`
 
 
 ## Credits
