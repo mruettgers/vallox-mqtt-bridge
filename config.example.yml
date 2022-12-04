@@ -1,6 +1,6 @@
 fetch_interval: 300
 
-valox:
+vallox:
   unit:
     host: 10.4.35.232
     port: 80

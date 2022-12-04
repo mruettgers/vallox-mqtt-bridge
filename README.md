@@ -6,7 +6,7 @@ Publishes metrics of your Vallox ventilation unit to an MQTT broker and configur
 ```yaml
 fetch_interval: 300
 
-valox:
+vallox:
   unit:
     host: 10.4.35.232
     port: 80
