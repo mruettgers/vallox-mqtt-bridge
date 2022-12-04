@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-alpine
 LABEL maintainer="Michael Ruettgers <michael@ruettgers.eu>"
 
 ENV HOME /opt/vallox-mqtt-bridge
