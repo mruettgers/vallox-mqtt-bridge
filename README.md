@@ -68,7 +68,7 @@ ventilation/unit/1/metric/A_CYC_AWAY_SPEED_SETTING/value 10
 
 ### Build
 
-`docker buildx build --platform=linux/arm/v7,linux/amd64 -t mruettgers/vallox-mqtt-bridge .`
+`docker buildx build --platform=linux/arm/v7,linux/arm64,linux/amd64 -t mruettgers/vallox-mqtt-bridge .`
 
 To push to the registry add `--push`.
 
