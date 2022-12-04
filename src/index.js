@@ -1,19 +1,27 @@
 const Vallox = require('@danielbayerlein/vallox-api')
 const YAML = require('yaml')
 const fs = require('fs')
+const process = require('process')
 const mqtt = require('mqtt')
 
 const configFile = process.argv[2] || 'config.yml'
+if (!fs.existsSync(configFile)) {
+    console.error(`Config file ${configFile} does not exist`)
+    process.exit(1)
+}
 console.log(`Loading config from file ${configFile}`)
 
 const fh = fs.readFileSync(configFile, 'utf8')
 const config = YAML.parse(fh)
+
+console.log('Config:', config);
+
 if (config.mqtt.base_topic.substr(-1,1) === '/') {
     config.mqtt.base_topic = config.mqtt.base_topic.substr(0,config.mqtt.base_topic.length-1)
 }
 
 const mqtt_client = mqtt.connect(`mqtt://${config.mqtt.broker.host}`)
-const vallox_client = new Vallox({ ip: config.valox.unit.host, port: config.valox.unit.port })
+const vallox_client = new Vallox({ ip: config.vallox.unit.host, port: config.vallox.unit.port })
 
 
 // Get all profiles
