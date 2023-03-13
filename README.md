@@ -15,6 +15,7 @@ mqtt:
   broker:
     host: 10.4.32.103
   base_topic: ventilation/unit/1
+  client_id: my-client-id
 
 metrics:
   - A_CYC_FAN_SPEED

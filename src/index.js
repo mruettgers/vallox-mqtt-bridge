@@ -20,7 +20,12 @@ if (config.mqtt.base_topic.substr(-1,1) === '/') {
     config.mqtt.base_topic = config.mqtt.base_topic.substr(0,config.mqtt.base_topic.length-1)
 }
 
-const mqtt_client = mqtt.connect(`mqtt://${config.mqtt.broker.host}`)
+const mqtt_client = mqtt.connect(
+    `mqtt://${config.mqtt.broker.host}`,
+    {
+        clientId: (config.mqtt.client_id || null)
+    }
+)
 const vallox_client = new Vallox({ ip: config.vallox.unit.host, port: config.vallox.unit.port })
 
 
