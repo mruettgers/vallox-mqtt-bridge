@@ -62,7 +62,7 @@ const setProfile = (payload) => {
 }
 
 // Get Metrics
-const getMetrics = (keys = null, cb) => {
+const getMetrics = (keys, cb = null) => {
     try {
         if (typeof keys === 'string') {
             keys = keys.length > 0 ? JSON.parse(keys) : []
@@ -79,11 +79,11 @@ const getMetrics = (keys = null, cb) => {
                     const topic = `${config.mqtt.base_topic}/metric/${key}/value`
                     mqtt_client.publish(topic, metrics[key] === undefined ? 'undefined' : metrics[key].toString())
                 }
-                cb()        
+                cb && cb()        
             })
             .catch((err) => {
                 console.error(err)
-                cb(err)
+                cb && cb(err)
             })
     }
     catch (err) {
